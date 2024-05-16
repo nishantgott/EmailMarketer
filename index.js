@@ -2,6 +2,7 @@ import express from 'express';
 import connectDB from './config/db.js';
 import dotenv from 'dotenv';
 import emailRoutes from "./routes/emailRoutes.js"
+import campaignRoutes from "./routes/campaignRoutes.js"
 import morgan from 'morgan';
 import cors from 'cors';
 
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/email", emailRoutes);
+app.use("/campaign", campaignRoutes);
 
 
 
