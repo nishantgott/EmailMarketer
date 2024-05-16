@@ -11,6 +11,7 @@ const CampaignPage = () => {
     const [campaignName, setCampaignName] = useState('');
 
     const launchCampaign = async () => {
+        setCampaignName('');
         setPopupOpen(true);
     };
 
@@ -24,11 +25,12 @@ const CampaignPage = () => {
 
     const handleSubmit = async () => {
         try {
+            await axios.post('http://localhost:8000/campaign/add-campaign', { campaign_name: campaignName });
             console.log(campaignName);
             for (const a of active) {
                 for (const r of activeRecepients) {
                     console.log('Sending email to:', r);
-                    const send = await axios.post('http://localhost:8000/email/send-this-mail', { recepient: r, subject: a.subject, body: a.body });
+                    const send = await axios.post('http://localhost:8000/email/send-this-mail', { recepient: r, subject: a.subject, body: a.body, campaignName, template: a });
                     console.log('Email sent:', send);
                 }
             }
