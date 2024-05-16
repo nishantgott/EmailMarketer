@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
     res.send("<h1>Hello there</h1>");
 })
 
-
+app.use("/email", emailRoutes);
 
 
 
