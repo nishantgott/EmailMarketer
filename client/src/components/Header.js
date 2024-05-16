@@ -14,7 +14,7 @@ const Header = () => {
                         <div className="navbar-nav">
                             <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
                             <NavLink className="nav-link" to="/campaign">Campaign</NavLink>
-                            <NavLink className="nav-link" to="#">Analytics</NavLink>
+                            <NavLink className="nav-link" to="/analytics">Analytics</NavLink>
                         </div>
                     </div>
                 </div>

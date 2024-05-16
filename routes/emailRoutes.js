@@ -1,10 +1,9 @@
 import express from 'express';
-import { addTemplateController, deleteTemplateController, getTemplatesController, sendEmailController, sendThisEmailController } from '../controllers/emailController.js';
+import { addTemplateController, deleteTemplateController, getTemplatesController, sendThisEmailController } from '../controllers/emailController.js';
 
 
 const router = express.Router();
 
-router.get("/send-mail", sendEmailController);
 
 router.post("/send-this-mail", sendThisEmailController);
 

@@ -15,6 +15,29 @@ export const addCampaignController = async (req, res) => {
     }
 }
 
+export const getCampaigns = async (req, res) => {
+    try {
+        const campaigns = await campaignModel.find({}).select('name');
+        res.status(200).send({ message: "Success", campaigns });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Adding campaign went wrong');
+    }
+}
+
+export const deleteCampaignController = async (req, res) => {
+    try {
+        const { name } = req.body;
+        const campaign = await campaignModel.findOne({ name }).deleteOne();
+        res.status(200).send({ message: "Success", campaign });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Deleting campaign went wrong');
+    }
+}
+
+
+
 export const addMessageController = async (req, res) => {
     try {
         const { campaign_name, message_id, open, click, template } = req.body;
