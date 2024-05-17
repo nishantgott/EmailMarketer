@@ -17,7 +17,7 @@ npm run dev
 ## Set up Environment variables
 1. MONGO_URL
 2. MAILGUN_API_KEY
-3. MAILGUN_DOMAIN
+3. MAILGUN_DOMAIN - After creating a mailgun account, create an API key, and verify the recipients ["nishantgk2004@gmail.com", "nishanthg2004@gmail.com"]
 
 ## Overview
 1. In the HomePage, You can create multiple email templates and store them in the database. You can also add and delete them.
