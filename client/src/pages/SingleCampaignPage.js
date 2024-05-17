@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 import CampaignsList from '../components/CampaignsList';
+import axios from 'axios';
 
 
 const SingleCampaignPage = () => {
     const { name } = useParams();
+
     return (
         <Layout>
             <div className='container'>

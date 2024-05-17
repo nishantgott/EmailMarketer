@@ -29,6 +29,7 @@ export const deleteCampaignController = async (req, res) => {
     try {
         const { name } = req.body;
         const campaign = await campaignModel.findOne({ name }).deleteOne();
+        await messageModel.find({ campaign_name: name }).deleteMany();
         res.status(200).send({ message: "Success", campaign });
     } catch (error) {
         console.log(error);

@@ -14,8 +14,8 @@ export const sendThisEmailController = async (req, res) => {
         console.log('sending email...\n');
 
         // Send email via Mailgun
-        const msg = await mg.messages.create('sandbox4cc8e2f5a61c45048562bb634ac43ae3.mailgun.org', {
-            from: "Excited User <mailgun@sandbox4cc8e2f5a61c45048562bb634ac43ae3.mailgun.org>",
+        const msg = await mg.messages.create(process.env.MAILGUN_DOMAIN, {
+            from: `Excited User <mailgun@${process.env.MAILGUN_DOMAIN}>`,
             to: [recepient],
             subject: subject,
             text: body,
