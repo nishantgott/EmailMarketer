@@ -3,6 +3,8 @@ import Layout from '../components/Layout';
 import TemplateDropdown from '../components/TemplateDropdown';
 import UsersDropdown from '../components/UsersDropdown';
 import axios from 'axios';
+import './CampaignPage.css';
+import toast from 'react-hot-toast';
 
 const CampaignPage = () => {
     const [active, setActive] = useState([]);
@@ -10,7 +12,7 @@ const CampaignPage = () => {
     const [isPopupOpen, setPopupOpen] = useState(false);
     const [campaignName, setCampaignName] = useState('');
 
-    const launchCampaign = async () => {
+    const launchCampaign = () => {
         setCampaignName('');
         setPopupOpen(true);
     };
@@ -34,7 +36,8 @@ const CampaignPage = () => {
                     console.log('Email sent:', send);
                 }
             }
-            closePopup(); // Close popup after sending emails
+            closePopup();
+            toast.success('Campaign Launched Succesfully');
         } catch (error) {
             console.log('Error sending emails:', error);
         }
@@ -44,29 +47,46 @@ const CampaignPage = () => {
         <Layout>
             <div className='container'>
                 <div className='row'>
-                    <div className='col-md-3 pt-5'>
+                    <div className='col-md-4 pt-5'>
+                        <div className="box-header">
+                            <h3>Select Templates</h3>
+                        </div>
                         <TemplateDropdown active={active} setActive={setActive} />
                     </div>
-                    <div className='col-md-3 mx-5 pt-5'>
+                    <div className='col-md-4 pt-5'>
+                        <div className="box-header">
+                            <h3>Select Users</h3>
+                        </div>
                         <UsersDropdown activeRecepients={activeRecepients} setActiveRecepients={setActiveRecepients} />
                     </div>
-                    <div className='col-md-3 mx-5 d-flex align-items-center justify-content-center'>
+                    <div className='col-md-4 d-flex align-items-center justify-content-center'>
                         <button type="button" className="btn btn-primary btn-lg" onClick={launchCampaign}>Launch Campaign</button>
                     </div>
                 </div>
             </div>
             {isPopupOpen && (
-                <div className="popup">
-                    <div className="popup-content">
-                        <h2>Enter Campaign Name</h2>
-                        <input type="text" value={campaignName} onChange={handleNameChange} />
-                        <button onClick={handleSubmit}>Submit</button>
-                        <button onClick={closePopup}>Cancel</button>
-                    </div>
-                </div>
+                <CampaignPopup
+                    campaignName={campaignName}
+                    handleNameChange={handleNameChange}
+                    handleSubmit={handleSubmit}
+                    closePopup={closePopup}
+                />
             )}
         </Layout>
     );
 };
+
+const CampaignPopup = ({ campaignName, handleNameChange, handleSubmit, closePopup }) => (
+    <div className="popup">
+        <div className="popup-content">
+            <h2>Enter Campaign Name</h2>
+            <input type="text" value={campaignName} onChange={handleNameChange} />
+            <div className="popup-buttons">
+                <button onClick={handleSubmit} className="btn btn-success">Submit</button>
+                <button onClick={closePopup} className="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+    </div>
+);
 
 export default CampaignPage;

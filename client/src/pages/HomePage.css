@@ -1,0 +1,25 @@
+.container {
+    margin-top: 20px;
+}
+
+.col-md-4 {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.col-md-8 {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    text-align: center;
+}
+
+.btn {
+    margin-top: 20px;
+}

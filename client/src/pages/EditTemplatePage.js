@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import TemplateList from '../components/TemplateList';
 import EditTemplateForm from '../components/EditTemplateForm';
 import axios from 'axios';
+import './HomePage.css';
+
 
 
 const EditTemplatePage = () => {
@@ -28,10 +30,10 @@ const EditTemplatePage = () => {
         <Layout>
             <div className='container'>
                 <div className='row'>
-                    <div className='col-md-3 pt-5'>
+                    <div className='col-md-4 pt-5'>
                         <TemplateList />
                     </div>
-                    <div className='col-md-7 pt-5 mx-5 px-5'>
+                    <div className='col-md-8 pt-5'>
                         <EditTemplateForm template={template} />
                     </div>
                 </div>

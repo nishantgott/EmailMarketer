@@ -26,18 +26,38 @@ mongoose.connect(dbURI, {
 app.post('/webhook', async (req, res) => {
     try {
         const jsonPayload = req.body;
+        // console.log(jsonPayload);
         const messageId = jsonPayload['event-data'].message.headers['message-id'];
+        const eventt = jsonPayload['event-data'].event;
 
-        console.log(`Received message ID: ${messageId}`);
+        // console.log(`Received message ID: ${messageId}`);
 
         const mId = `<${messageId}>`;
-
+        console.log(eventt);
         const result = await messageModel.updateOne(
             { message_id: mId },
             { $set: { open: "yes" } }
         );
 
-        console.log('Update result:', result);
+        res.status(200).send('Event received');
+    } catch (error) {
+        console.error('Error processing webhook:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+app.post('/webhook/click', async (req, res) => {
+    try {
+        const jsonPayload = req
+        const messageId = jsonPayload['event-data'].message.headers['message-id'];
+        const eventt = jsonPayload['event-data'].event;
+
+        const mId = `<${messageId}>`;
+        console.log(eventt);
+        const result = await messageModel.updateOne(
+            { message_id: mId },
+            { $set: { click: "yes" } }
+        );
 
         res.status(200).send('Event received');
     } catch (error) {

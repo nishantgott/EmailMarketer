@@ -76,10 +76,10 @@ const SingleCampaignPage = () => {
         <Layout>
             <div className='container'>
                 <div className='row'>
-                    <div className='col-md-3 pt-5 me-5 ms-0'>
+                    <div className='col-md-4 pt-5'> {/* Adjusted column size */}
                         <CampaignsList />
                     </div>
-                    <div className='col-md-8 pt-5 mt-2'>
+                    <div className='col-md-8 pt-5'> {/* Adjusted column size */}
                         <h1>{name}</h1>
                         <div className="d-flex justify-content-between mt-5">
                             <div className="card">
@@ -102,36 +102,30 @@ const SingleCampaignPage = () => {
                                     <p className="card-text">{(total !== 0) ? 100.0 * click / total : 0}%</p>
                                 </div>
                             </div>
-
                         </div>
-                        <div className='row'>
-                            <div className='col-md-3 mt-5'>
-                                <ul class="list-group list-group-flush">
-                                    {
-                                        templates.map((t, index) => {
-                                            return (
-                                                <li className="list-group-item">
-                                                    <div className="d-flex w-100 justify-content-between ">
-                                                        <h5 className="mb-1">{String.fromCharCode(65 + index)}</h5>
-                                                    </div>
-                                                    <p className="mb-1">{t.subject.slice(0, 20)}...</p>
-                                                    <small>{t.body.slice(0, 100)}...</small>
-                                                </li>
-                                            )
-                                        })
-                                    }
-
+                        <div className='row mt-5'>
+                            <div className='col-md-3'>
+                                <ul className="list-group list-group-flush">
+                                    {templates.map((t, index) => (
+                                        <li className="list-group-item" key={index}>
+                                            <div className="d-flex w-100 justify-content-between">
+                                                <h5 className="mb-1">{String.fromCharCode(65 + index)}</h5>
+                                            </div>
+                                            <p className="mb-1">{t.subject.slice(0, 20)}...</p>
+                                            <small>{t.body.slice(0, 100)}...</small>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
-                        </div>
-                        <div className='col-md-8 '>
-                            <BarChart dataa1={openData} dataa2={clickData} labelss={labels} />
+                            <div className='col-md-9'>
+                                <BarChart dataa1={openData} dataa2={clickData} labelss={labels} />
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </Layout>
+
     )
 }
 

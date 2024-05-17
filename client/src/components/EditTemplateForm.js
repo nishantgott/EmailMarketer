@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 const EditTemplateForm = ({ template }) => {
     const [subject, setSubject] = useState(template?.subject || '');
@@ -20,6 +21,7 @@ const EditTemplateForm = ({ template }) => {
             console.log(subject);
             console.log(body);
             await axios.post('http://localhost:8000/email/edit-template', { id: template._id, subject, body });
+            toast.success('Template Modified!')
         } catch (error) {
             console.log(error);
         }

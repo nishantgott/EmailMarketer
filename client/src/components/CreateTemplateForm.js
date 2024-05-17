@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-
+import toast, { Toaster } from 'react-hot-toast';
 const CreateTemplateForm = () => {
     const [subject, setSubject] = useState("");
     const [body, setBody] = useState("");
