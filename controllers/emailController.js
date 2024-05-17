@@ -47,6 +47,17 @@ export const addTemplateController = async (req, res) => {
     }
 }
 
+export const editTemplateController = async (req, res) => {
+    try {
+        const { id, subject, body } = req.body;
+        const template = await emailTemplatesModel.updateOne({ _id: id }, { $set: { subject: subject, body: body } });
+        res.status(200).send({ template, message: 'Template added successfully' });
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('Adding template went wrong');
+    }
+}
+
 export const getTemplatesController = async (req, res) => {
     try {
         console.log('doing');
@@ -70,5 +81,17 @@ export const deleteTemplateController = async (req, res) => {
     } catch (error) {
         console.log(error)
         res.status(500).send('Deleting template went wrong');
+    }
+}
+
+export const getTemplateFromIdController = async (req, res) => {
+    try {
+        const { id } = req.body;
+        console.log(id);
+        const template = await emailTemplatesModel.findById(id);
+        res.status(200).send({ template });
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('Getting template from id went wrong');
     }
 }

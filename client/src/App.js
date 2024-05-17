@@ -5,6 +5,7 @@ import CreateTemplatePage from './pages/CreateTemplatePage';
 import CampaignPage from './pages/CampaignPage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import SingleCampaignPage from './pages/SingleCampaignPage';
+import EditTemplatePage from './pages/EditTemplatePage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/templates/create' element={<CreateTemplatePage />} />
+        <Route path='/templates/edit/:id' element={<EditTemplatePage />} />
         <Route path='/campaign' element={<CampaignPage />} />
         <Route path='/analytics' element={<AnalyticsPage />} />
         <Route path='/analytics/:name' element={<SingleCampaignPage />} />

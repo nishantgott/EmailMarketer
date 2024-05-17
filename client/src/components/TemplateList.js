@@ -39,7 +39,7 @@ const TemplateList = () => {
                 {
                     templates.map((t, index) => {
                         return (
-                            <NavLink to="#" key={t._id} className="list-group-item list-group-item-action active py-3" aria-current="true">
+                            <NavLink to={`/templates/edit/${t._id}`} key={t._id} className="list-group-item list-group-item-action active py-3" aria-current="true">
                                 <div className="d-flex w-100 justify-content-between">
                                     <h5 className="mb-1">{String.fromCharCode(65 + index)}</h5>
                                     <button type="button" className="btn btn-sm btn-danger" onClick={() => handleDelete(t._id)}>Delete</button>
