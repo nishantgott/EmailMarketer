@@ -33,15 +33,42 @@ npm run dev
 
 
 ## Approach
-1. Using express, I created a server. After creating an account on mailgun, I created an API key and set it up in my .env file
-2. Created backend for sending mails through mailgun API
-3. Created backend for creating, deleting and editing email templates
-4. Decided to use MongoDB for storing all my templates, campaigns, and analytics information  
-5. I chose 4 users, as the free version of Mailgun is only limited to 4 authorized recepients
-6. Once the launch button is clicked, each template is sent to every recipient
-7. The campaign is automatically added to the analytics page where details about every campaign can be viewed
-8. Created a react app and developed frontend
-9. Used Chart.JS to display bar graphs comparing the click rates and open rates of different templates in a campaign. This will help user understand which template is better
-10. Used a webhook and connected it to my database, allowing real time updates to when an email is clicked
+1. Setting Up the Server
+   - Created a server using Express.
+   - Registered on Mailgun, generated an API key, and configured it in the .env file.
+2. Backend Development
+   - Developed endpoints to send emails using the Mailgun API.
+   - Created endpoints to manage email templates (create, delete, and edit).
+   - Opted for MongoDB to store templates, campaigns, and analytics data.
+3. Mailgun and Email Sending
+   - Due to the limitation of the free Mailgun version, selected 4 authorized recipients for the demonstration.
+   - Implemented functionality to send each template to all recipients upon clicking the launch button.
+   - Automatically recorded each campaign in the analytics section, allowing for detailed viewing of campaign metrics.
+4. Frontend Development
+   - Built a React app for the frontend interface.
+   - Integrated Chart.js to display bar graphs that compare the click and open rates of different templates within a campaign, providing insights into template performance.
+5. Real-Time Updates
+   - Utilized a webhook connected to the database for real-time updates when an email is opened or clicked.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    
 
