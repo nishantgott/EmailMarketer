@@ -43,7 +43,7 @@ const TemplateList = () => {
                             <h5 className="mb-1">{String.fromCharCode(65 + index)}</h5>
                             <button type="button" className="btn btn-sm btn-danger" onClick={() => handleDelete(t._id)}>Delete</button>
                         </div>
-                        <p className="mb-1">{t.subject}</p>
+                        <p className="mb-1">{t.subject.slice(0, 20)}...</p>
                         <small>{t.body.slice(0, 100)}...</small>
                     </NavLink>
                 ))}

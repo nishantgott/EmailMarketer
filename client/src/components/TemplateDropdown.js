@@ -37,8 +37,8 @@ const TemplateDropdown = ({ active, setActive }) => {
                         <label className="btn btn-outline-primary" htmlFor={t._id}>
                             <h5 className="mb-1">{String.fromCharCode(65 + index)}</h5>
                             <div>
-                                <p className="mb-1">{t.subject}</p>
-                                <small>{t.body.slice(0, 100)}...</small>
+                                <p className="mb-1">{t.subject.slice(0, 40)}</p>
+                                <small>{t.body.slice(0, 60)}...</small>
                             </div>
                         </label>
                     </div>
