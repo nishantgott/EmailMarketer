@@ -1,5 +1,8 @@
 # EmailMarketer 
 
+## Deployed app
+ You can check out the deployed app at https://emailmarketertoday.onrender.com/
+
 ## Install dependencies
 
 Run:
