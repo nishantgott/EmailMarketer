@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+// Function to strip HTML tags from the body content
+const stripHtml = (html) => {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || "";
+};
+
 const TemplateDropdown = ({ active, setActive }) => {
     const [templates, setTemplates] = useState([]);
 
@@ -37,8 +43,8 @@ const TemplateDropdown = ({ active, setActive }) => {
                         <label className="btn btn-outline-primary" htmlFor={t._id}>
                             <h5 className="mb-1">{String.fromCharCode(65 + index)}</h5>
                             <div>
-                                <p className="mb-1">{t.subject}</p>
-                                <small>{t.body.slice(0, 100)}...</small>
+                                <p className="mb-1">{t.subject.slice(0, 40)}</p>
+                                <small>{stripHtml(t.body).slice(0, 60)}...</small> {/* Display plain text */}
                             </div>
                         </label>
                     </div>

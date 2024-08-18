@@ -1,0 +1,28 @@
+.ql-container {
+    border: none !important;
+    /* Remove default border */
+    border-radius: 10px;
+    /* Match the outer container’s border radius */
+    padding: 0;
+    /* Remove any padding */
+    box-shadow: none;
+    /* Remove any shadow */
+}
+
+.ql-editor {
+    min-height: 200px;
+    /* Set the desired minimum height */
+    padding: 15px;
+    /* Add some padding inside the editor */
+    border-radius: 10px;
+    /* Match the border radius */
+}
+
+.ql-toolbar {
+    border: none !important;
+    /* Remove the toolbar border */
+    border-radius: 10px 10px 0 0;
+    /* Rounded corners at the top */
+    margin-bottom: 0;
+    /* Remove any margin */
+}
