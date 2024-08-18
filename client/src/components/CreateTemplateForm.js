@@ -1,41 +1,95 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import axios from 'axios';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import toast, { Toaster } from 'react-hot-toast';
+import './CreateTemplateForm.css'; // Assuming you add the above CSS here
+
 const CreateTemplateForm = () => {
     const [subject, setSubject] = useState("");
     const [body, setBody] = useState("");
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        console.log("Subject:", subject);
+        console.log("Body:", body);
+
+        if (!body) {
+            toast.error("Body is required");
+            return;
+        }
+
         try {
-            console.log(subject);
-            console.log(body);
-            const template = await axios.post('http://localhost:8000/email/add-template', { subject, body });
+            await axios.post('http://localhost:8000/email/add-template', { subject, body });
+            toast.success("Template created successfully!");
         } catch (error) {
             console.log(error);
+            toast.error("Failed to create template");
         }
-    }
+    };
+
+    const modules = {
+        toolbar: [
+            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+            [{ size: ['small', false, 'large', 'huge'] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ['link']
+        ],
+    };
 
     return (
-        <div>
-            <form>
-                <div className="row mb-3">
-                    <label htmlFor="inputEmail3" className="col-sm-2 col-form-label" >Subject</label>
-                    <div className="col-md-8">
-                        <input type="text" className="form-control" id="inputEmail3" onChange={(e) => setSubject(e.target.value)} value={subject} />
-                    </div>
-                </div>
-                <div className="row mb-3">
-                    <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Body</label>
-                    <div className="col-md-8">
-                        <textarea className="form-control" id="inputPassword3" rows="14" onChange={(e) => setBody(e.target.value)} value={body}></textarea>
-                    </div>
+        <div className="container mt-4">
+            <Toaster position="top-center" />
+            <form onSubmit={handleSubmit}>
+                <div className="mb-4">
+                    <input
+                        type="text"
+                        className="form-control form-control-lg"
+                        placeholder="Subject"
+                        onChange={(e) => setSubject(e.target.value)}
+                        value={subject}
+                        style={{
+                            borderRadius: "10px",
+                            border: "1px solid #ccc",
+                            padding: "12px 20px",
+                            fontSize: "18px"
+                        }}
+                    />
                 </div>
 
-                <div className="row mb-3 justify-content-center">
-                    <button type="submit" className="col-md-2 btn btn-primary" onClick={(e) => handleSubmit(e)}>Create</button>
+                <div className="mb-4" style={{ border: "1px solid #ddd", borderRadius: "10px", padding: "0" }}>
+                    <ReactQuill
+                        value={body}
+                        onChange={setBody}
+                        placeholder="Compose your email..."
+                        modules={modules}
+                        style={{
+                            borderRadius: "10px",
+                            border: "1px solid #ccc",
+                            padding: "10px",
+                            minHeight: "200px",
+                            fontSize: "16px"
+                        }}
+                    />
                 </div>
-            </form >
-        </div >
+
+                <div className="d-flex justify-content-end">
+                    <button
+                        type="submit"
+                        className="btn btn-primary btn-lg"
+                        style={{
+                            borderRadius: "25px",
+                            padding: "10px 30px",
+                            fontSize: "18px"
+                        }}
+                    >
+                        Create
+                    </button>
+                </div>
+            </form>
+        </div>
     );
 };
 

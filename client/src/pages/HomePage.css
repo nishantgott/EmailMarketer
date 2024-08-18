@@ -1,5 +1,6 @@
 .container {
-    margin-top: 20px;
+    margin-top: 60px;
+    margin-bottom: 40px;
 }
 
 .col-md-4 {
@@ -22,4 +23,9 @@ h2 {
 
 .btn {
     margin-top: 20px;
+}
+
+.highlight {
+    color: red;
+    font-weight: bold;
 }

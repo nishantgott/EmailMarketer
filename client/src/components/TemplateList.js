@@ -1,8 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
-import { useState } from 'react';
 import './TemplateList.css';
+
+// Function to strip HTML tags from the body content
+const stripHtml = (html) => {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || "";
+};
 
 const TemplateList = () => {
     const [templates, setTemplates] = useState([]);
@@ -44,7 +49,7 @@ const TemplateList = () => {
                             <button type="button" className="btn btn-sm btn-danger" onClick={() => handleDelete(t._id)}>Delete</button>
                         </div>
                         <p className="mb-1">{t.subject.slice(0, 20)}...</p>
-                        <small>{t.body.slice(0, 100)}...</small>
+                        <small>{stripHtml(t.body).slice(0, 100)}...</small>
                     </NavLink>
                 ))}
             </div>
